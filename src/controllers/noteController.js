@@ -1,23 +1,25 @@
 const NoteSchema = require('../models/noteSchema')
-const mongoose = require('mongoose')
 
 const getAll = async (req, res) => {
   try {
     const notes = await NoteSchema.find()
     res.status(200).json(notes)
+
   } catch (error) {
     res.status(500).json({
       message: error.message
     })
   }
 }
-
 // criar método para cadastrar uma nota
 const createNote = async (req, res) => {
+  const { title, content } = req.body;
+
   try {
+    
     const newNote = new NoteSchema({
-      title: req.body.title,
-      content: req.body.content
+      title,
+      content
     })
 
     const savedNote = await newNote.save()
@@ -25,6 +27,7 @@ const createNote = async (req, res) => {
       message: 'Nota adicionada com sucesso! (:',
       savedNote
     })
+
   } catch (error) {
     res.status(500).json({
       message: error.message
