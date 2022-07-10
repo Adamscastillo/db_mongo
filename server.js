@@ -1,4 +1,12 @@
-const app = require('./src/application')
+const app = require('./src/config/express')
 const PORT = process.env.PORT
 
-app.listen(PORT, () => console.log('Servidor rodando na porta' + PORT))
+app.listen(PORT, async () => {
+    console.table({
+        "Server-Health": {
+            Apllication:"Express",
+            Status: "Online",
+            Port: PORT
+        },
+    })
+})

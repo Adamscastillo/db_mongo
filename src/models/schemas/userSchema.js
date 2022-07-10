@@ -10,6 +10,22 @@ const userSchema = new Schema({
     type: String,
     required: true
   },
+  cep: {
+    type: String
+  },
+  cpf: {
+    type: String,
+    required: true
+  },
+  states: {
+    type: String
+  },
+  city: {
+    type: String
+  },
+  phone: {
+    type: String
+  },
   password: {
     type: String,
     required: false,
